@@ -28,8 +28,8 @@ func NewClient(endpoint string) *Client {
 	}
 }
 
-func (c *Client) Request(act interface{}) (*Response, error) {
-	payload, err := json.Marshal(act)
+func (c *Client) Request(act RequestAction) (*Response, error) {
+	payload, err := act.RequestBody()
 	if err != nil {
 		panic(errors.Wrap(err, "NewRequestAction failed"))
 	}

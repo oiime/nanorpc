@@ -11,8 +11,7 @@ type Account struct {
 }
 
 func (a *Account) Balance(c *Client) (*AccountBalanceResponse, error) {
-	rsp, err := c.Request(RequesAction{
-		Action:  RequestActionTypeAccountBalance,
+	rsp, err := c.Request(RequesActionBalance{
 		Account: a.addr,
 	})
 	if err != nil {
@@ -27,7 +26,6 @@ func (a *Account) Balance(c *Client) (*AccountBalanceResponse, error) {
 
 func (a *Account) History(c *Client) (*AccountBalanceResponse, error) {
 	rsp, err := c.Request(RequesActionAccountHistory{
-		Action:  RequestActionTypeAccountHistory,
 		Account: a.addr,
 	})
 	if err != nil {
